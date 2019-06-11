@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day: MyString
+  time: MyString
+  duration: MyString
+  lawyer_id: 1
+
+two:
+  day: MyString
+  time: MyString
+  duration: MyString
+  lawyer_id: 1
