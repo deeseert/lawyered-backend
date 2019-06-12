@@ -6,7 +6,7 @@ class ClientsController < ApplicationController
     if client && client.authenticate(params[:password])
       # could we use Serializer to only display the id?
       # render json: {id: client.id}
-      render json: {token: issue_token({id: client.id})}
+      render json: {clientId: client.id, token: issue_token({id: client.id})}
     else
       render json: {error: "User/password combination failed"}, status: 400
   end
@@ -19,7 +19,7 @@ def validate
   client = get_current_user
   # byebug
   if client
-    render json: { username: client.username}
+    render json: {clientId: client.id, username: client.username}
   else
     render json: {error: "Invalid user"}, status: 404
   end

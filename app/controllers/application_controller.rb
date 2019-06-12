@@ -16,6 +16,7 @@ class ApplicationController < ActionController::API
   end
 
   def get_token
+    # byebug
     request.headers['Authorization']
   end
 
