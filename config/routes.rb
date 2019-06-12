@@ -10,4 +10,6 @@ post '/signin', to: 'clients#signin'
 get '/validate', to: 'clients#validate'
 get '/dashboard', to: 'clients#dashboard'
 get "lawyers/:id/availabilities", to: "availabilities#index"
+get "lawyers/:id/appointments", to: "appointments#index"
+get "lawyers/:id/appointments/:id", to: "appointments#show"
 end
