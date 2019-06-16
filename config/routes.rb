@@ -12,7 +12,7 @@ get '/dashboard', to: 'clients#dashboard'
 get "lawyers/:id/availabilities", to: "availabilities#index"
 get "clients/:id/appointments", to: "appointments#index"
 patch "lawyers/:id/availabilities/:id", to: "availabilities#book_availability"
-patch "clients/:id/appointments/:id", to: "clients#make_appointment_available_again"
+patch "clients/:id/appointments/:id", to: "availabilities#make_appointment_available_again"
 get "lawyers/:id/appointments", to: "appointments#index"
 get "lawyers/:id/appointments/:id", to: "appointments#show"
 end
