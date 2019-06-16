@@ -23,6 +23,28 @@ class AvailabilitiesController < ApplicationController
     end
   end
 
+  def book_availability
+    availability = Availability.find_by(id: params[:id])
+    if availability
+      availability.booked = true
+      availability.save
+      render json: availability
+    else
+      render json: {error: "Sorry bro, couldn't find it for some reason...."}, status: 404
+    end
+  end
+
+  def make_appointment_available_again
+    availability = Availability.find_by(id: params[:id])
+    if availability
+      availability.booked = nil
+      availability.save
+      render json: availability
+    else
+      render json: {error: "whatdfefghert...."}, status: 404
+    end
+  end
+
   private
 
   def availability_params

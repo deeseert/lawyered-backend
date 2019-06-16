@@ -18,12 +18,12 @@ def validate
   #Through the above metadata you can pass the id from the front-end to the back-end
   client = get_current_user
   # byebug
-  if client
-    render json: {clientId: client.id, username: client.username}
-  else
-    render json: {error: "Invalid user"}, status: 404
+    if client
+      render json: {clientId: client.id, username: client.username}
+    else
+      render json: {error: "Invalid user"}, status: 404
+    end
   end
-end
 
 
   def show
@@ -43,4 +43,5 @@ end
       render json: {error: "Invalid user"}, status: 404
     end
   end
+
 end
