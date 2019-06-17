@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_17_095830) do
+ActiveRecord::Schema.define(version: 2019_06_17_153519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_06_17_095830) do
     t.datetime "updated_at", null: false
     t.string "field"
     t.integer "price_hour"
+    t.float "rating"
   end
 
 end
