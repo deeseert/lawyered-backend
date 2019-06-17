@@ -9,10 +9,10 @@ post '/signin', to: 'clients#signin'
 # this other route allows me to stay logged in
 get '/validate', to: 'clients#validate'
 get '/dashboard', to: 'clients#dashboard'
-get "lawyers/:id/availabilities", to: "availabilities#index"
+get "lawyers/:id/availabilities", to: "lawyers#availabilities"
 get "clients/:id/appointments", to: "appointments#index"
 patch "lawyers/:id/availabilities/:id", to: "availabilities#book_availability"
 patch "clients/:id/appointments/:id", to: "availabilities#make_appointment_available_again"
-get "lawyers/:id/appointments", to: "appointments#index"
+get "lawyers/:id/appointments", to: "lawyers#appointments"
 get "lawyers/:id/appointments/:id", to: "appointments#show"
 end

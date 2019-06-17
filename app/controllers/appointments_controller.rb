@@ -1,14 +1,14 @@
 class AppointmentsController < ApplicationController
 
   def index
-        appointments = Appointment.where(lawyer_id: params[:id])
-        render json: appointments
+    appointments = Appointment.all
+    render json: appointments
   end
 
   def show
       appointment = Appointment.find_by(id: params[:id])
       if appointment
-          render json:appointment
+          render json: appointment, include: :availability
       else
           render json: {error: 'Appointment not found'}, status: 404
       end
@@ -17,6 +17,7 @@ class AppointmentsController < ApplicationController
   def create
     appointment = Appointment.new(appointment_params)
     if appointment.save
+        appointment.availability.update(booked: true)
         render json: appointment
     else
         render json: {error: 'Unable to create appointment'}, status: 400
@@ -26,6 +27,7 @@ class AppointmentsController < ApplicationController
   def destroy
     appointment = Appointment.find_by(id: params[:id])
       if appointment
+        appointment.availability.update(booked: nil)
         appointment.destroy
         render json: {message: "Appointment successfully deleted."}
       else
@@ -36,7 +38,7 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-      params.require(:appointment).permit(:client_id, :lawyer_id, :date, :time)
+      params.require(:appointment).permit(:client_id, :availability_id)
 
   end
 end
