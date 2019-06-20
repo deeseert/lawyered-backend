@@ -25,10 +25,10 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    appointment = Appointment.find_by(id: params[:id])
-      if appointment
-        appointment.availability.update(booked: nil)
-        appointment.destroy
+    availability = Availability.find_by(id: params[:id])
+      if availability
+        availability.update(booked: nil)
+        availability.appointment.destroy
         render json: {message: "Appointment successfully deleted."}
       else
         render json: {error: "Appointment not found!"}, status: 404
