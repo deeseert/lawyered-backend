@@ -38,7 +38,8 @@ def validate
   def dashboard
     client = get_current_user
     if client
-      render json: client.appointments
+      client_apps = client.appointments.map{|appointment| appointment.availability}
+      render json: client_apps
     else
       render json: {error: "Invalid user"}, status: 404
     end
