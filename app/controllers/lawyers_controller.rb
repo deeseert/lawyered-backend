@@ -17,7 +17,8 @@ class LawyersController < ApplicationController
 
   def availabilities
     lawyer = Lawyer.find_by(id: params[:id])
-    render json: lawyer.availabilities
+    # byebug
+    render json: lawyer.availabilities.sort
   end
 
 end
