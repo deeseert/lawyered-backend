@@ -2,6 +2,7 @@ class AvailabilitiesController < ApplicationController
 
   def index
         availabilities = Availability.where(lawyer_id: params[:id])
+        return availabilities
         render json: availabilities
   end
 
